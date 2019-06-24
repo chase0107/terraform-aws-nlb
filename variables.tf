@@ -100,34 +100,34 @@ resource "aws_lb_target_group" "front_end" {
   vpc_id                             = "${aws_vpc.main.id}"
   deregistration_delay               = "${var.target_group_deregistration_delay}"
   slow_start                         = "${var.target_group_name}"
-  lambda_multi_value_headers_enabled = "${var.CHANGE}"
-  proxy_protocol_v2                  = "${var.CHANGE}"
+  lambda_multi_value_headers_enabled = "${var.Clambda_headers_enabled}"
+  proxy_protocol_v2                  = "${var.proxy_protocol}"
 
   stickiness {
-    type            = "${var.CHANGE}"
-    cookie_duration = "${var.CHANGE}"
-    enabled         = "${var.CHANGE}"
+    type            = "${var.stickiness_type}"
+    cookie_duration = "${var.stickiness_cookie_duration}"
+    enabled         = "${var.stickiness_enabled}"
   }
 
   health_check {
-    enabled             = "${var.CHANGE}"
-    internal            = "${var.CHANGE}"
-    path                = "${var.CHANGE}"
-    pool                = "${var.CHANGE}"
-    protocol            = "${var.CHANGE}"
-    timeout             = "${var.CHANGE}"
-    healthy_threshold   = "${var.CHANGE}"
-    unhealthy_threshold = "${var.CHANGE}"
-    matcher             = "${var.CHANGE}"
+    enabled             = "${var.health_check_enabled}"
+    internal            = "${var.health_check_internal}"
+    path                = "${var.health_check_path}"
+    pool                = "${var.health_check_pool}"
+    protocol            = "${var.health_check_protocol}"
+    timeout             = "${var.health_check_timeout}"
+    healthy_threshold   = "${var.health_check_healthy_threshold}"
+    unhealthy_threshold = "${var.health_check_unhealthy_threshold}"
+    matcher             = "${var.health_check_matcher}"
   }
 
-  target_type = "${var.CHANGE}"
-  tags        = "${var.CHANGE}"
+  target_type = "${var.target_type}"
+  tags        = "${var.Ctags}"
 }
 
 resource "aws_lb_target_group_attachment" "test" {
   target_group_arn  = "${aws_lb_target_group.test.arn}"
   target_id         = "${aws_instance.test.id}"
-  port              = "${var.CHANGE}"
-  availability_zone = "${var.CHANGE}"
+  port              = "${var.target_group_port}"
+  availability_zone = "${var.target_group_az}"
 }

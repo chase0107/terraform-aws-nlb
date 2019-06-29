@@ -13,7 +13,7 @@ resource "aws_lb" "front_end" {
   listener_protocol     = "${var.listener_protocol}"
   target_group_name     = "${var.target_group_name}"
   target_group_count    = "${var.target_group_count}"
-  target_group_port     = "${var.target_group_port }"
+  target_group_port     = "${var.target_group_port}"
   target_group_protocol = "${var.target_group_protocol}"
 
   access_logs {
@@ -121,8 +121,7 @@ resource "aws_lb_target_group" "front_end" {
     matcher             = "${var.health_check_matcher}"
   }
 
-  target_type = "${var.target_type}"
-  tags        = "${var.Ctags}"
+  tags = "${var.Ctags}"
 }
 
 resource "aws_lb_target_group_attachment" "test" {

@@ -1,16 +1,16 @@
 variable "load_balancer_name" {
-  description = "The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier"
+  description = "The name of the LB."
   type        = "string"
   default     = []
 }
 
 variable "load_balancer_is_internal" {
-  description = "The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier"
+  description = "If true, the LB will be internal."
   type        = "string"
 }
 
 variable "load_balancer_type" {
-  description = "The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier"
+  description = "The type of load balancer to create. "
   type        = "string"
 }
 
